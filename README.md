@@ -18,3 +18,8 @@ Assuming the input file is a CSV file with:
 3. custodian
 
 values (in that order), this script generates custodian ranges of consecutive documents (in CSV format).
+
+Assumptions
+-----------
+
+The input file is assumed to be sorted in ascending order of beginning Bates number.
