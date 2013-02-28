@@ -18,5 +18,3 @@ Assuming the input file is a CSV file with:
 3. custodian
 
 values (in that order), this script generates custodian ranges of consecutive documents (in CSV format).
-
-Output is sorted by custodian.
