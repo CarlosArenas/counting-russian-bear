@@ -7,11 +7,16 @@ BatesRange = Struct.new(:first_page, :last_page)
 
 # read list of documents
 CSV.foreach(ARGV[0], headers: true) do |row|
+  # parse entries
   beg_bates = row[0]
   end_bates = row[1]
-  end_bates = beg_bates if row[1].empty?  # one-page doc may not explicitly state end Bates
   custodian = row[2]
-  custodian = '[na]' if custodian.empty?  # account for docs wit blank custodian
+
+  # deal with missing values
+  end_bates = beg_bates if end_bates.nil? or end_bates.empty?
+  custodian = '[na]'    if custodian.nil? or custodian.empty?
+
+  # track row as custodian's document
   docs[custodian] << Document.new( BatesNumber.new(beg_bates), BatesNumber.new(end_bates))
 end
 
